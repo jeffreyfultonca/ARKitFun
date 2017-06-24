@@ -21,7 +21,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -51,15 +51,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        
 //        deathStarContainerNode.addChildNode(orbitOneNode)
         
-        // Ship
-        let shipNode = deathStarContainerNode.childNode(withName: "Ship", recursively: false)!
-        shipNode.removeFromParentNode()
+        // X-wing
+        let xWingNode = deathStarContainerNode.childNode(withName: "X-wing", recursively: false)!
+        xWingNode.removeFromParentNode()
         
         let orbitTwoNode = SCNNode()
         orbitTwoNode.name = "orbitTwoNode"
-        orbitTwoNode.addChildNode(shipNode)
+        orbitTwoNode.addChildNode(xWingNode)
         
-        let rotationTwo = SCNAction.rotateBy(x: 1, y: 0, z: 0, duration: 3)
+        let rotationTwo = SCNAction.rotateBy(x: 1, y: 0, z: 0, duration: 5)
         let infiniteRotationTwo = SCNAction.repeatForever(rotationTwo)
         orbitTwoNode.runAction(infiniteRotationTwo)
         
@@ -73,7 +73,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         orbitThreeNode.name = "orbitThreeNode"
         orbitThreeNode.addChildNode(tieFighterNode)
         
-        let rotationThree = SCNAction.rotateBy(x: 0, y: 0, z: 1, duration: 2)
+        let rotationThree = SCNAction.rotateBy(x: 0, y: 0, z: 1, duration: 7)
         let infiniteRotationThree = SCNAction.repeatForever(rotationThree)
         orbitThreeNode.runAction(infiniteRotationThree)
         
