@@ -13,6 +13,7 @@
 		00691FF81EFDBA1D00B594FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00691FF61EFDBA1D00B594FC /* Main.storyboard */; };
 		00691FFA1EFDBA1D00B594FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00691FF91EFDBA1D00B594FC /* Assets.xcassets */; };
 		00691FFD1EFDBA1D00B594FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00691FFB1EFDBA1D00B594FC /* LaunchScreen.storyboard */; };
+		0083FBE61EFDFA80000DCC6D /* DeathStarTheme.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0083FBE51EFDFA3C000DCC6D /* DeathStarTheme.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		00691FF91EFDBA1D00B594FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00691FFC1EFDBA1D00B594FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00691FFE1EFDBA1D00B594FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0083FBE51EFDFA3C000DCC6D /* DeathStarTheme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = DeathStarTheme.m4a; path = ../../../../../../Desktop/DeathStarTheme.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				00691FF01EFDBA1D00B594FC /* AppDelegate.swift */,
 				00691FF21EFDBA1D00B594FC /* art.scnassets */,
 				00691FF41EFDBA1D00B594FC /* ViewController.swift */,
+				0083FBE51EFDFA3C000DCC6D /* DeathStarTheme.m4a */,
 				00691FF61EFDBA1D00B594FC /* Main.storyboard */,
 				00691FF91EFDBA1D00B594FC /* Assets.xcassets */,
 				00691FFB1EFDBA1D00B594FC /* LaunchScreen.storyboard */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0083FBE61EFDFA80000DCC6D /* DeathStarTheme.m4a in Resources */,
 				00691FF31EFDBA1D00B594FC /* art.scnassets in Resources */,
 				00691FFD1EFDBA1D00B594FC /* LaunchScreen.storyboard in Resources */,
 				00691FFA1EFDBA1D00B594FC /* Assets.xcassets in Resources */,
@@ -316,6 +320,7 @@
 				006920031EFDBA1D00B594FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

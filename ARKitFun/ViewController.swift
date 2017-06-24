@@ -9,10 +9,13 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,26 +33,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let rootNode = scene.rootNode
         let deathStarContainerNode = rootNode.childNode(withName: "DeathStarContainer", recursively: false)!
-        
-//        let geometry: SCNGeometry
-//        
-//        // Square
-//        geometry = SCNBox(width: 0.01, height: 0.01, length: 0.01, chamferRadius: 0)
-//        geometry.materials.first?.diffuse.contents = UIColor.green
-//        
-//        let geometryNode = SCNNode(geometry: geometry)
-//        geometryNode.name = "geometryNode"
-//        geometryNode.position = SCNVector3(0.31, 0, 0)
-//        
-//        let orbitOneNode = SCNNode()
-//        orbitOneNode.name = "orbitOneNode"
-//        orbitOneNode.addChildNode(geometryNode)
-//        
-//        let rotationOne = SCNAction.rotateBy(x: 0, y: 0, z: 3, duration: 5)
-//        let infiniteRotationOne = SCNAction.repeatForever(rotationOne)
-//        orbitOneNode.runAction(infiniteRotationOne)
-//        
-//        deathStarContainerNode.addChildNode(orbitOneNode)
         
         // X-wing
         let xWingNode = deathStarContainerNode.childNode(withName: "X-wing", recursively: false)!
@@ -81,6 +64,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        scene.rootNode.isHidden = true
+        
+        let delaySeconds = DispatchTime.now() + 5
+        DispatchQueue.main.asyncAfter(deadline: delaySeconds) {
+            scene.rootNode.isHidden = false
+            
+            let url = Bundle.main.url(forResource: "DeathStarTheme", withExtension: "m4a")!
+            try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try! AVAudioSession.sharedInstance().setActive(true)
+            
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: url)
+            self.audioPlayer?.play()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
