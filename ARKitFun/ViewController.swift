@@ -26,6 +26,59 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
+        sceneView.automaticallyUpdatesLighting = true
+        
+        let rootNode = scene.rootNode
+        let deathStarContainerNode = rootNode.childNode(withName: "DeathStarContainer", recursively: false)!
+        
+//        let geometry: SCNGeometry
+//        
+//        // Square
+//        geometry = SCNBox(width: 0.01, height: 0.01, length: 0.01, chamferRadius: 0)
+//        geometry.materials.first?.diffuse.contents = UIColor.green
+//        
+//        let geometryNode = SCNNode(geometry: geometry)
+//        geometryNode.name = "geometryNode"
+//        geometryNode.position = SCNVector3(0.31, 0, 0)
+//        
+//        let orbitOneNode = SCNNode()
+//        orbitOneNode.name = "orbitOneNode"
+//        orbitOneNode.addChildNode(geometryNode)
+//        
+//        let rotationOne = SCNAction.rotateBy(x: 0, y: 0, z: 3, duration: 5)
+//        let infiniteRotationOne = SCNAction.repeatForever(rotationOne)
+//        orbitOneNode.runAction(infiniteRotationOne)
+//        
+//        deathStarContainerNode.addChildNode(orbitOneNode)
+        
+        // Ship
+        let shipNode = deathStarContainerNode.childNode(withName: "Ship", recursively: false)!
+        shipNode.removeFromParentNode()
+        
+        let orbitTwoNode = SCNNode()
+        orbitTwoNode.name = "orbitTwoNode"
+        orbitTwoNode.addChildNode(shipNode)
+        
+        let rotationTwo = SCNAction.rotateBy(x: 1, y: 0, z: 0, duration: 3)
+        let infiniteRotationTwo = SCNAction.repeatForever(rotationTwo)
+        orbitTwoNode.runAction(infiniteRotationTwo)
+        
+        deathStarContainerNode.addChildNode(orbitTwoNode)
+        
+        // Tie Fighter
+        let tieFighterNode = deathStarContainerNode.childNode(withName: "TieFighter", recursively: false)!
+        tieFighterNode.removeFromParentNode()
+        
+        let orbitThreeNode = SCNNode()
+        orbitThreeNode.name = "orbitThreeNode"
+        orbitThreeNode.addChildNode(tieFighterNode)
+        
+        let rotationThree = SCNAction.rotateBy(x: 0, y: 0, z: 1, duration: 2)
+        let infiniteRotationThree = SCNAction.repeatForever(rotationThree)
+        orbitThreeNode.runAction(infiniteRotationThree)
+        
+        deathStarContainerNode.addChildNode(orbitThreeNode)
+        
         // Set the scene to the view
         sceneView.scene = scene
     }
@@ -35,6 +88,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingSessionConfiguration()
+        
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -47,34 +101,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    // MARK: - ARSCNViewDelegate
+    // MARK: - Actions
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    @IBAction func twoTouchDoubleTap(_ sender: Any) {
+        let configuration = ARWorldTrackingSessionConfiguration()
         
+        sceneView.session.run(configuration, options: .resetTracking)
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
